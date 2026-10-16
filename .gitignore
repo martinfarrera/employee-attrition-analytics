@@ -1,0 +1,9 @@
+# Raw source, archives, and local provenance receipts are never committed.
+/data/raw/*
+!/data/raw/README.md
+__pycache__/
+.pytest_cache/
+.venv/
+.env
+.env.*
+kaggle.json
