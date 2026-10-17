@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220"
+     role="img" aria-labelledby="title description">
+  <title id="title">Overall attrition distribution</title>
+  <desc id="description">Percentage of validated rows by Attrition label;
+  bars use a common zero to 100 percent scale. Counts appear in labels.</desc>
+  <rect width="640" height="220" fill="white"/>
+  <g font-family="sans-serif" font-size="16" fill="#172b4d">
+    <text x="20" y="28">Attrition — share of validated rows</text>
+    <text x="20" y="80">No</text>
+    <rect x="70" y="60" width="300" height="28" fill="#edf0f5"/>
+    <rect x="70" y="60" width="251.63" height="28" fill="#245b91"/>
+    <text x="385" y="80">83.88% (n=1,233)</text>
+    <text x="20" y="140">Yes</text>
+    <rect x="70" y="120" width="300" height="28" fill="#edf0f5"/>
+    <rect x="70" y="120" width="48.37" height="28" fill="#245b91"/>
+    <text x="385" y="140">16.12% (n=237)</text>
+    <text x="70" y="190">0%</text>
+    <text x="325" y="190">100%</text>
+  </g>
+</svg>
