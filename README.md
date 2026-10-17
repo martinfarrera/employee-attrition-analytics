@@ -1,6 +1,6 @@
 # Employee attrition analytics — source intake
 
-First reviewable slice (ODD **T1**, **S1/S2**): a non-executing Kaggle acquisition plan and deterministic, offline CSV validation. No dataset has been downloaded or redistributed. EDA, modeling, demo, and publication are future work, not implemented here.
+First reviewable slice (ODD **T1**, **S1/S2**): a non-executing Kaggle acquisition plan and deterministic, offline CSV validation. A local dataset was downloaded and validated, but no raw data is redistributed. EDA, modeling, and demo are future work, not implemented here.
 
 ## Quick path
 
@@ -36,4 +36,4 @@ This is an educational project. Future analysis must verify the source's synthet
 - Kaggle API metadata names the dataset, describes it as fictional data created by IBM data scientists, and reports `DbCL-1.0` for contents. See the [DbCL](https://opendatacommons.org/licenses/dbcl/1-0/) and incorporated [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/) terms.
 - Dataset access and metadata retrieval succeeded. Local download and validation passed on 2026-10-16 UTC. The file's exact-byte SHA-256 is recorded in the ignored local `data/raw/source-receipt.md`.
 
-A public produced work must include a notice such as: “Contains information from [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset), made available under the [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/); contents are licensed under [DbCL 1.0](https://opendatacommons.org/licenses/dbcl/1-0/).” No raw dataset is committed. No credential files or tokens were inspected, printed, or changed. No public delivery is implied by local implementation. The initial slice is not yet committed or pushed.
+A public produced work must include a notice such as: “Contains information from [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset), made available under the [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/); contents are licensed under [DbCL 1.0](https://opendatacommons.org/licenses/dbcl/1-0/).” No raw dataset is committed. No credential files or tokens were inspected, printed, or changed. Publication of this initial slice does not imply that EDA, modeling, or demo work is complete.
