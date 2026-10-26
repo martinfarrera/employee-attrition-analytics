@@ -102,7 +102,11 @@ def test_portfolio_artifacts_match_documented_t1_aggregate_counts(tmp_path):
     # Same label totals as T1, but entirely generated employee records.
     result = run(tmp_path, sample().replace(b",Yes,", b",No,", 498))
     assert result.returncode == 0, result.stderr
-    expected = snapshot(CLI.parents[1] / "reports")
+    # The dashboard is separately owned; EDA must reproduce only these files.
+    owned = ("attrition-eda.md", "data/attrition-counts.csv",
+             "data/overview.csv", "figures/attrition.svg")
+    expected = {name: (CLI.parents[1] / "reports" / name).read_bytes()
+                for name in owned}
     assert snapshot(tmp_path / "reports") == expected
 
 

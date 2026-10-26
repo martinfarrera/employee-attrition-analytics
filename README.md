@@ -1,6 +1,6 @@
 # Employee attrition analytics
 
-Source intake (ODD **T1**, **S1/S2**) and a small descriptive EDA slice (**T2**, **S2/S4/S5**): deterministic validation, aggregate tables, a static visualization, and an [evidence-based report](reports/attrition-eda.md). The documented source has **16.12% Attrition = Yes**. No raw data is redistributed. An educational model comparison (**T3**, **S2/S4**) adds held-out evaluation; a demo remains future work.
+Source intake (ODD **T1**, **S1/S2**) and a small descriptive EDA slice (**T2**, **S2/S4/S5**): deterministic validation, aggregate tables, a static visualization, and an [evidence-based report](reports/attrition-eda.md). The documented source has **16.12% Attrition = Yes**. No raw data is redistributed. An educational model comparison (**T3**, **S2/S4**) adds held-out evaluation; an offline aggregate dashboard (**T4**, **S2/S5**) provides a minimal demo.
 
 ## Quick path
 
@@ -20,6 +20,29 @@ python -B src/intake.py validate data/raw/WA_Fn-UseC_-HR-Employee-Attrition.csv
 ```
 
 Success exits 0 and prints sorted JSON with source identifier, row/column counts, attrition counts, and the exact input-byte SHA-256. Failure exits 1, prints a diagnostic to stderr, and emits no success report. `validate -` also accepts CSV bytes on stdin. Validation never contacts Kaggle, rewrites input, or prints employee rows.
+
+## Open the offline dashboard
+
+Open `reports/dashboard/index.html` directly in a browser after cloning or
+extracting the repository. No server, installation, JavaScript, raw dataset, or
+internet connection is required. Keep the `reports/` directory structure intact
+so the local chart and evidence links resolve. External attribution links only
+contact their destinations if you choose to follow them.
+
+The page shows **1,470 rows**, **16.12% Attrition = Yes**, a distribution chart,
+and the two-label count table. It uses only the checked-in EDA aggregates; it
+contains no model results or employee-level records. This is a static snapshot,
+not a live data application. After regenerating EDA, update the page's values
+and chart alternative text to match, then verify from the repository root:
+
+```sh
+python -m pytest -q -p no:cacheprovider tests/test_dashboard.py tests/test_eda.py
+python -m pytest -q -p no:cacheprovider
+```
+
+Tests compare visible numbers with both CSVs and check local resources, evidence
+links, attribution, and descriptive limitations. This minimal T4 slice covers
+**S2/S5**; further demo features and publication remain deferred.
 
 ## Reproduce the exploratory analysis
 
@@ -44,8 +67,9 @@ not evaluated predictive performance. See the report for limitations and attribu
 
 ## Reproduce the educational model comparison
 
-Use a dedicated output directory **outside `reports/`**: the EDA regression tests
-compare all checked-in reports recursively. No model artifacts are checked in.
+Use a dedicated output directory **outside `reports/`** to keep model outputs
+separate from the EDA artifacts and dashboard. EDA regression tests compare its
+four owned artifacts byte for byte. No model artifacts are checked in.
 
 ```sh
 python -B src/model.py data/raw/WA_Fn-UseC_-HR-Employee-Attrition.csv --output /tmp/attrition-model
@@ -118,4 +142,4 @@ This is an educational project using data described by the source as fictional. 
 - Kaggle API metadata names the dataset, describes it as fictional data created by IBM data scientists, and reports `DbCL-1.0` for contents. See the [DbCL](https://opendatacommons.org/licenses/dbcl/1-0/) and incorporated [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/) terms.
 - Dataset access and metadata retrieval succeeded. Local download and validation passed on 2026-10-16 UTC. The file's exact-byte SHA-256 is recorded in the ignored local `data/raw/source-receipt.md`.
 
-A public produced work must include a notice such as: “Contains information from [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset), made available under the [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/); contents are licensed under [DbCL 1.0](https://opendatacommons.org/licenses/dbcl/1-0/).” No raw dataset is committed. No credential files or tokens were inspected, printed, or changed. The intake and EDA slices are published through commit `6c33c15`. The model comparison adds the reproducible evaluation documented above; the demo is not implemented.
+A public produced work must include a notice such as: “Contains information from [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset), made available under the [Open Database License (ODbL) 1.0](https://opendatacommons.org/licenses/odbl/1-0/); contents are licensed under [DbCL 1.0](https://opendatacommons.org/licenses/dbcl/1-0/).” No raw dataset is committed. No credential files or tokens were inspected, printed, or changed. The intake and EDA slices are published through commit `6c33c15`. The model comparison adds the reproducible evaluation documented above; the minimal offline aggregate demo is available locally and has not been published.

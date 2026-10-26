@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employee attrition overview | Aggregate demo</title>
+  <style>
+    body { margin: 0; background: #f4f7fa; color: #172b42; font: 1rem/1.6 system-ui, sans-serif; }
+    main { max-width: 56rem; margin: auto; padding: 2rem 1rem; }
+    h1, h2 { line-height: 1.2; }
+    a { color: #185b91; }
+    a:focus-visible { outline: 3px solid #185b91; outline-offset: 3px; }
+    .metrics { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .metrics div { flex: 1 1 12rem; background: white; padding: 1rem; border: 1px solid #ccd7e2; border-radius: .5rem; }
+    dd { margin: 0; font-size: 2rem; font-weight: bold; }
+    figure { margin: 2rem 0; }
+    img { width: 100%; height: auto; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    caption { text-align: left; font-weight: bold; margin-bottom: .5rem; }
+    th, td { text-align: left; padding: .65rem; border-bottom: 1px solid #ccd7e2; }
+    footer { margin-top: 2rem; border-top: 1px solid #ccd7e2; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Employee attrition overview</h1>
+  <p>Offline portfolio demo · checked-in aggregate EDA snapshot</p>
+  <p>Overall label distribution in the fictional IBM HR dataset. This view summarizes the sample, not reasons for leaving.</p>
+  <dl class="metrics">
+    <div><dt>Sample rows</dt><dd id="total">1,470</dd></div>
+    <div><dt>Attrition = Yes</dt><dd id="rate">16.12%</dd></div>
+  </dl>
+  <figure>
+    <img src="../figures/attrition.svg" alt="Attrition labels: No, 1,233 (83.88%); Yes, 237 (16.12%)." />
+    <figcaption>Percentages use all 1,470 rows as denominator.</figcaption>
+  </figure>
+  <table>
+    <caption>Overall attrition labels</caption>
+    <thead><tr><th scope="col">Attrition</th><th scope="col">Count</th><th scope="col">Share</th></tr></thead>
+    <tbody>
+      <tr><td>No</td><td>1,233</td><td>83.88%</td></tr>
+      <tr><td>Yes</td><td>237</td><td>16.12%</td></tr>
+    </tbody>
+  </table>
+  <section aria-labelledby="evidence">
+    <h2 id="evidence">Evidence and limits</h2>
+    <p>Values are copied from the checked-in <a href="../data/overview.csv">overview CSV</a> and
+      <a href="../data/attrition-counts.csv">label counts CSV</a>, rounded to two decimals.
+      Tests check this page against those aggregates. No employee-level records are included.</p>
+    <p>This is not an annual attrition rate: no observation window or sampling design is established.
+      These are descriptive frequencies, not causal findings or population estimates.
+      Do not use this work for individual employment decisions.</p>
+    <p>Read the <a href="../attrition-eda.md">EDA report</a> for method and provenance.
+      This static snapshot does not automatically refresh when the CSV files change.</p>
+  </section>
+  <footer>
+    <p>Contains information from
+      <a href="https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset">IBM HR Analytics Employee Attrition &amp; Performance</a>,
+      made available under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>;
+      contents are licensed under <a href="https://opendatacommons.org/licenses/dbcl/1-0/">DbCL 1.0</a>.
+      Attribution links are optional external navigation; this page loads no external resources.</p>
+  </footer>
+</main>
+</body>
+</html>
