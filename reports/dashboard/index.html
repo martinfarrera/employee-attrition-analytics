@@ -5,20 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Employee attrition overview | Aggregate demo</title>
   <style>
-    body { margin: 0; background: #f4f7fa; color: #172b42; font: 1rem/1.6 system-ui, sans-serif; }
+    :root {
+      color-scheme: light dark;
+      --page-background: #f4f7fa;
+      --surface-background: #fff;
+      --text-color: #172b42;
+      --link-color: #185b91;
+      --border-color: #ccd7e2;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page-background: #101a27;
+        --surface-background: #1b2939;
+        --text-color: #edf4fb;
+        --link-color: #8ecbff;
+        --border-color: #40546b;
+      }
+    }
+    body { margin: 0; background: var(--page-background); color: var(--text-color); font: 1rem/1.6 system-ui, sans-serif; }
     main { max-width: 56rem; margin: auto; padding: 2rem 1rem; }
     h1, h2 { line-height: 1.2; }
-    a { color: #185b91; }
-    a:focus-visible { outline: 3px solid #185b91; outline-offset: 3px; }
+    a { color: var(--link-color); }
+    a:focus-visible { outline: 3px solid var(--link-color); outline-offset: 3px; }
     .metrics { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .metrics div { flex: 1 1 12rem; background: white; padding: 1rem; border: 1px solid #ccd7e2; border-radius: .5rem; }
+    .metrics div { flex: 1 1 12rem; background: var(--surface-background); padding: 1rem; border: 1px solid var(--border-color); border-radius: .5rem; }
     dd { margin: 0; font-size: 2rem; font-weight: bold; }
     figure { margin: 2rem 0; }
     img { width: 100%; height: auto; }
-    table { width: 100%; border-collapse: collapse; background: white; }
+    table { width: 100%; border-collapse: collapse; background: var(--surface-background); }
     caption { text-align: left; font-weight: bold; margin-bottom: .5rem; }
-    th, td { text-align: left; padding: .65rem; border-bottom: 1px solid #ccd7e2; }
-    footer { margin-top: 2rem; border-top: 1px solid #ccd7e2; }
+    th, td { text-align: left; padding: .65rem; border-bottom: 1px solid var(--border-color); }
+    footer { margin-top: 2rem; border-top: 1px solid var(--border-color); }
   </style>
 </head>
 <body>

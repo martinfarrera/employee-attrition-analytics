@@ -45,6 +45,13 @@ def test_offline_resources_and_accessible_structure():
     assert 'url(' not in css and '@import' not in css
 
 
+def test_dashboard_supports_system_dark_mode():
+    css = page().find('.//style').text.lower()
+    assert '@media (prefers-color-scheme: dark)' in css
+    assert '--page-background' in css
+    assert '--surface-background' in css
+
+
 def test_evidence_links_attribution_and_limits():
     document = page()
     links = {element.attrib['href'] for element in document.findall('.//a')}
