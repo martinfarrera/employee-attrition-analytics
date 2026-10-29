@@ -52,6 +52,17 @@ def test_dashboard_supports_system_dark_mode():
     assert '--surface-background' in css
 
 
+def test_dashboard_table_remains_readable_on_narrow_screens():
+    document = page()
+    table_container = document.find(".//*[@class='table-scroll']")
+    assert table_container is not None
+    assert table_container.find('.//table') is not None
+    css = document.find('.//style').text.lower()
+    assert '.table-scroll { overflow-x: auto;' in css
+    assert '@media (max-width: 36rem)' in css
+    assert 'main { padding: 1.25rem .75rem;' in css
+
+
 def test_evidence_links_attribution_and_limits():
     document = page()
     links = {element.attrib['href'] for element in document.findall('.//a')}

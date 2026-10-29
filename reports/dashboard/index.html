@@ -25,6 +25,13 @@
     body { margin: 0; background: var(--page-background); color: var(--text-color); font: 1rem/1.6 system-ui, sans-serif; }
     main { max-width: 56rem; margin: auto; padding: 2rem 1rem; }
     h1, h2 { line-height: 1.2; }
+    .table-scroll { overflow-x: auto; }
+    .table-scroll table { min-width: 24rem; }
+    @media (max-width: 36rem) {
+      main { padding: 1.25rem .75rem; }
+      figure { margin: 1.5rem 0; }
+      th, td { padding: .55rem; }
+    }
     a { color: var(--link-color); }
     a:focus-visible { outline: 3px solid var(--link-color); outline-offset: 3px; }
     .metrics { display: flex; flex-wrap: wrap; gap: 1rem; }
@@ -51,6 +58,7 @@
     <img src="../figures/attrition.svg" alt="Attrition labels: No, 1,233 (83.88%); Yes, 237 (16.12%)." />
     <figcaption>Percentages use all 1,470 rows as denominator.</figcaption>
   </figure>
+  <div class="table-scroll" role="region" aria-label="Overall attrition labels table" tabindex="0">
   <table>
     <caption>Overall attrition labels</caption>
     <thead><tr><th scope="col">Attrition</th><th scope="col">Count</th><th scope="col">Share</th></tr></thead>
@@ -59,6 +67,7 @@
       <tr><td>Yes</td><td>237</td><td>16.12%</td></tr>
     </tbody>
   </table>
+  </div>
   <section aria-labelledby="evidence">
     <h2 id="evidence">Evidence and limits</h2>
     <p>Values are copied from the checked-in <a href="../data/overview.csv">overview CSV</a> and
